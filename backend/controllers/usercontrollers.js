@@ -11,7 +11,7 @@ exports.getusers = async (req, res) => {
   };
 
 
-//signup
+//User signup
 exports.signup = async (req, res) => {
     try{
     const data = req.body
@@ -31,7 +31,7 @@ catch(err){
 };
 
 
-//signin
+//User signin/login
 exports.signin =  expressAsyncHandler(async (req, res) => {
     const data=req.body
     const user=await User.findOne({email:data.email})
@@ -64,3 +64,46 @@ exports.search = async (req, res) => {
     res.status(201).send(result) 
       
 }
+
+//Get specific user with id/name
+exports.getuser = expressAsyncHandler(async (req, res) => {
+    //const user = await User.findById(req.params.id);
+    const user = await User.find({name:req.params.name})
+    if (user) {
+      res.send(user);
+    } else {
+      res.status(404).send({ message: 'User Not Found' });
+    }
+  })
+
+
+// update user with id/name
+exports.updateuser = expressAsyncHandler(async (req, res) => {
+    //const user = await User.findById(req.params.id);
+    const user = await User.find({name:req.params.name})
+    if (user) {
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+      user.isAdmin = Boolean(req.body.isAdmin);
+      const updatedUser = await user.save();
+      res.send({ message: 'User Updated', user: updatedUser });
+    } else {
+      res.status(404).send({ message: 'User Not Found' });
+    }
+  })
+
+//Delete user with id/name
+exports.deleteuser = expressAsyncHandler(async (req, res) => {
+    //const user = await User.findById(req.params.id);
+    const user = await User.find({name:req.params.name})
+    if (user) {
+      if (user.email === 'admin@example.com') {
+        res.status(400).send({ message: 'Can Not Delete Admin User' });
+        return;
+      }
+      await user.remove();
+      res.send({ message: 'User Deleted' });
+    } else {
+      res.status(404).send({ message: 'User Not Found' });
+    }
+  })
