@@ -1,8 +1,33 @@
 const Product = require("../models/productmodel")
+const User = require('../models/usermodel.js')
 const expressAsyncHandler = require('express-async-handler')
 
+//Get all products that is viewed initially
+exports.viewProduct= expressAsyncHandler(async (req, res) => {
+    const pdetail=await Product.find()
+    console.log(pdetail)
+    res.send(pdetail)
+  })
 
-
+  exports.bulkUpload= expressAsyncHandler(async (req, res) => {
+    res.send("data recieved")
+    let a=req.body.data
+    let x=[]
+  for(let i=1;i<a.length-1;i++){
+    let y={}
+    for (let j=0;j<a[0].length;j++){
+        y[a[0][j]]=a[i][j] 
+    }
+     x.push(y)
+  }
+  
+  console.log(x)
+  try {
+    Pmodel.insertMany(x)
+  } catch (e) {
+    print (e);
+  }
+  })
 //Get specific Product with name / title
 exports.getproduct = expressAsyncHandler(async (req, res) => {
     const prod = await Product.find({title:req.params.title});
