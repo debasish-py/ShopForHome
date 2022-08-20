@@ -1,41 +1,40 @@
 
 import React, { useState, useEffect } from "react";
-import Amazon from "./components/amazon";
-import Navbar from "./components/navbar";
-import Cart from "./components/cart";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import Amazon from "./components/amazon";
+// import Navbar from "./components/navbar";
+// import Cart from "./components/cart";
+import HomeFunc from "./components/uHome"
+import Upload from "./components/uploadCsv";
 
-const App = () => {
-  const [show, setShow] = useState(true);
-  const [cart, setCart] = useState([]);
 
-  const handleClick = (item) => {
-    if (cart.indexOf(item) !== -1) return;
-    setCart([...cart, item]);
-  };
+const App=()=>{
+    return(
+        <main>
+        <BrowserRouter>
+        <Routes>
+            {/* <Route path="/signin" element={<SignInFunc></SignInFunc>}></Route>
+            <Route path="/signup" element={<SignUpFunc></SignUpFunc>}></Route> */}
 
-  const handleChange = (item, d) => {
-    const ind = cart.indexOf(item);
-    const arr = cart;
-    arr[ind].amount += d;
 
-    if (arr[ind].amount === 0) arr[ind].amount = 1;
-    setCart([...arr]);
-  };
 
-  // useEffect(() => {
-  //   console.log("cart change");
-  // }, [cart]);
+            <Route path='/' element={<HomeFunc></HomeFunc>}></Route>
 
-  return (
-    <React.Fragment>
-      <Navbar setShow={setShow} size={cart.length} />
-      {show ? (
-        <Amazon handleClick={handleClick} />
-      ) : (
-        <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
-      )}
-    </React.Fragment>
-  );
-};
+            <Route path='/upload' element={<Upload></Upload>}></Route>
 
-export default App;
+
+
+
+            {/* <Route path='/navbar' element={<HomeFunc></HomeFunc>}></Route>
+            <Route path='/cart' element={<HomeFunc></HomeFunc>}></Route> */}
+            
+            {/* <Route path='/About' element={<AboutFunc></AboutFunc>}></Route>
+            <Route path='/User' element={<UserFunc></UserFunc>}></Route>
+            <Route path='/contact' element={<ContactFunc></ContactFunc>}></Route> */}
+
+        </Routes>
+        </BrowserRouter>
+        </main>
+    )
+}
+export default App
