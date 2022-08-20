@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema(
-    {
+    {   id:{
+        type:Number,
+        required:true,
+        unique:true
+    }, //delete after debashish code
          title:{
             type:String,
             required:true,
@@ -30,4 +34,5 @@ const productSchema = new mongoose.Schema(
         }
     })
 
-const product = mongoose.model('product',productSchema)
+const Pmodel = mongoose.model('product',productSchema)
+module.exports = Pmodel
