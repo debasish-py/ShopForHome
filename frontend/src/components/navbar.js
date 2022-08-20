@@ -13,6 +13,7 @@ const Navbar = ({ setShow, size }) => {
             <i className="fas fa-cart-plus"></i>
           </span>
           <span>{size}</span>
+          <a href="/upload">upload</a>
         </div>
       </div>
     </nav>

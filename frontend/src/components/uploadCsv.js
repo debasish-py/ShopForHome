@@ -1,7 +1,7 @@
 import { useState } from "react" 
 import Papa from "papaparse"
 import axios from  "axios"
-function upload() {
+function Upload() {
   const [udata,setData]=useState([])
    const submission=async(e)=>{
     e.preventDefault()
@@ -41,4 +41,4 @@ function upload() {
     </div>    
   )
      }
-export default upload;
+export default Upload;
