@@ -1,0 +1,53 @@
+.carddiv{
+    width: 300px;
+    border: 2px solid rgb(240, 240, 240);
+    margin: 10px;
+    background-color: rgb(249, 249, 249);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 0px 5px rgb(219, 219, 219);
+}
+.add{
+    color: white;
+    background-color: rgb(51, 220, 51);  
+}
+.add:hover{
+    background-color: rgb(39, 168, 39);
+}
+.wish{
+    color: white;
+   background-color: rgb(204, 82, 135);
+
+}
+.wish:hover{
+    background-color: rgb(167, 57, 105);
+}
+.desc{
+    margin:0 20px;
+}
+.imagebox img{
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+}
+.buttondiv{
+    
+    margin:20px auto;
+}
+.buttondiv button{
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    padding: 7px 15px;
+    border-radius: 3px;
+    margin: 5px;
+    font-weight: bold;
+}
+.price{
+    color: rgb(145, 145, 145);
+}
+
+.rate{
+    color: rgb(165, 8, 8);
+}

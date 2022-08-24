@@ -1,0 +1,15 @@
+*{
+  margin: none;
+}
+.appfooter{
+  height: 9vh;
+  width: 100vw;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  background-color: lightsteelblue;
+  font-size:  20px;
+}
+
+
+
