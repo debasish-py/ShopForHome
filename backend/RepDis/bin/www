@@ -1,0 +1,5 @@
+const server=require("../app")
+const config=require("../config")
+
+const port=config.WWW_PORT
+server.listen(port,()=>console.log(`server is run at for about ${port}`))
